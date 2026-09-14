@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ——— Scroll Animations (Intersection Observer) ———
-  const animatedElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in');
+  const animatedElements = document.querySelectorAll('.anim-on-scroll');
 
   const observerOptions = {
     root: null,
@@ -67,11 +67,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (entry.isIntersecting) {
         // Stagger animations for elements in grid layouts
         const delay = entry.target.closest('.rooms-grid, .services-grid, .testimonials-grid, .gallery-grid')
-          ? Array.from(entry.target.parentElement.children).indexOf(entry.target) * 100
+          ? Array.from(entry.target.parentElement.children).indexOf(entry.target) * 300
           : 0;
 
         setTimeout(() => {
-          entry.target.classList.add('visible');
+          entry.target.classList.add('animate__animated', 'animate__fadeInTopLeft', 'animate__fadeInTopRight');
         }, delay);
 
         observer.unobserve(entry.target);
